@@ -34,5 +34,5 @@ echo "Running tests"
 cd ../tests
 python -m unittest discover -s .
 
-echo "Exiting test virtual environment"
-deactivate
+#echo "Exiting test virtual environment"
+#deactivate

@@ -23,7 +23,7 @@ help:
 venv:
 	@test -d "$(VENVS_DIR)" || mkdir -p "$(VENVS_DIR)"
 	@rm -Rf "$(VENV_DIR)"
-	@python3 -m venv "$(VENV_DIR)"
+	@python2 -m virtualenv "$(VENV_DIR)"
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && pip install pip --upgrade && pip install -r requirements.dev.txt && pip install -e ."
 	@echo "Enter virtual environment using:\n\n\t$ source $(VENV_DIR)/bin/activate\n"
 
@@ -77,12 +77,6 @@ fix-style:
 	@pycodestyle --exclude=.git,docs,$(shell $(STYLE_EXCLUDE_LIST)) --ignore=E309,E402 --max-line-length=$(STYLE_MAX_LINE_LENGTH) src/rastrea2r tests -q  | xargs autopep8 -i --max-line-length=$(STYLE_MAX_LINE_LENGTH)
 
 
-# help: check-types                    - check type hint annotations
-.PHONY: check-types
-check-types:
-	@cd src; MYPYPATH=$(VENV_DIR)/lib/python*/site-packages mypy -p rastrea2r --ignore-missing-imports
-
-
 # help: docs                           - generate project documentation
 .PHONY: check-coverage
 docs: check-coverage
@@ -113,7 +107,7 @@ dist:
 # help: dist-test                      - test a whell distribution package
 .PHONY: dist-test
 dist-test: dist
-	@cd dist && ../tests/test-dist.bash ./rastrea2r-*-py3-none-any.whl
+	@cd dist && ../tests/test-dist.bash ./rastrea2r-*-py2-none-any.whl
 
 
 # help: dist-upload                    - upload a wheel distribution package
