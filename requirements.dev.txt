@@ -1,7 +1,6 @@
 -r requirements.txt
 autopep8
 coverage
-mypy
 pycodestyle
 sphinx==1.6.1
 twine
