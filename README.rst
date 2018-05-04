@@ -1,7 +1,9 @@
-rastrea2r https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
+rastrea2r 
 #########
-
-rastrea2r
+.. image:: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
+    :target: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
+ 
+rastrea2r 
 
 Collecting & Hunting for Indicators of Compromise (IOC) with gusto and style! by @aboutsecurity
 
