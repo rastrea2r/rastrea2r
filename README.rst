@@ -1,4 +1,4 @@
-rastrea2r
+rastrea2r https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
 #########
 
 rastrea2r
