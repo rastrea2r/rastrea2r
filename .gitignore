@@ -24,6 +24,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+python/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -99,3 +100,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+.DS_Store
+.idea/
+docs/.DS_Store
+src/.DS_Store
+src/rastrea2r/.DS_Store
