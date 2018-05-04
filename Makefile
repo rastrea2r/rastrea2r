@@ -113,7 +113,7 @@ dist-test: dist
 # help: dist-upload                    - upload a wheel distribution package
 .PHONY: dist-upload
 dist-upload:
-	@twine upload dist/rastrea2r-*-py3-none-any.whl
+	@twine upload dist/rastrea2r-*-py2-none-any.whl
 
 
 # Keep these lines at the end of the file to retain nice help
