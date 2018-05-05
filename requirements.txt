@@ -1,4 +1,4 @@
-yara
+yara-python==3.5.0
 bottle
 PSutil
 Requests
