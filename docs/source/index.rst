@@ -1,12 +1,3 @@
-.. image:: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
-
-
-.. image:: https://readthedocs.org/projects/rastrea2r/badge/?version=latest
-
-
-.. image:: http://www.repostatus.org/badges/1.1.0/active.svg
-
-
 rastrea2r
 #########
 
