@@ -122,7 +122,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'description': 'rastrea2r',
     'show_powered_by': False,
-    # 'logo': 'my-logo.png',
+    'logo': 'logo.png',
     'logo_name': False,
     'page_width': '80%',
 }
