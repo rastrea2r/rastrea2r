@@ -1,19 +1,8 @@
 .. image:: https://github.com/rastrea2r/rastrea2r/blob/master/logo.png
-:align: center
-   :alt: logo
 
 .. image:: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
-:alt: travis-ci for master branch
-   :target: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
-
-.. image:: https://img.shields.io/github/issues/jantman/awslimitchecker.svg
-:alt: GitHub Open Issues
-   :target: https://github.com/jantman/awslimitchecker/issues
-
 
 .. image:: http://www.repostatus.org/badges/1.1.0/active.svg
-:alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed.
-   :target: http://www.repostatus.org/#active
 
 
 rastrea2r
@@ -23,10 +12,11 @@ Ever wanted to turn your AV console into an Incident Response & Threat Hunting m
 
 
 
+
+
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :hidden:
 
    user/index
    dev/index
