@@ -6,6 +6,10 @@
    :alt: travis-ci for master branch
    :target: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
 
+.. image:: https://readthedocs.org/projects/rastrea2r/badge/?version=latest
+   :target: http://rastrea2r.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 .. image:: http://www.repostatus.org/badges/1.1.0/active.svg
    :alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed.
    :target: http://www.repostatus.org/#active
