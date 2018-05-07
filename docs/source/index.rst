@@ -1,6 +1,3 @@
-.. image:: https://github.com/rastrea2r/rastrea2r/blob/master/logo.png
-
-
 .. image:: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
 
 
