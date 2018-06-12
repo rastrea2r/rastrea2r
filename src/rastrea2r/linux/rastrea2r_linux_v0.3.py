@@ -62,7 +62,7 @@ def yaradisk(path, server, rule, silent):
                                "module": 'yaradisk',
                                "hostname": os.uname()[1]}
                     if not silent:
-                        print(payload
+                        print(payload)
 
                     p=post('http://'+server+':'+str(server_port)+'/putfile', data=payload)
             except:
