@@ -4,7 +4,7 @@
 
 STYLE_EXCLUDE_LIST := git status --porcelain --ignored | grep "!!" | grep ".py$$" | cut -d " " -f2 | tr "\n" ","
 STYLE_MAX_LINE_LENGTH := 160
-VENVS_DIR := $(HOME)/.venvs
+VENVS_DIR := ./.venv
 VENV_DIR := $(VENVS_DIR)/rastrea2r
 
 # Do not remove this block. It is used by the 'help' rule when
@@ -23,7 +23,7 @@ help:
 venv:
 	@test -d "$(VENVS_DIR)" || mkdir -p "$(VENVS_DIR)"
 	@rm -Rf "$(VENV_DIR)"
-	@python2 -m virtualenv "$(VENV_DIR)"
+	@python3 -m virtualenv "$(VENV_DIR)"
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && pip install pip --upgrade && pip install -r requirements.dev.txt && pip install -e ."
 	@echo "Enter virtual environment using:\n\n\t$ source $(VENV_DIR)/bin/activate\n"
 
@@ -43,13 +43,13 @@ scrub:
 # help: test                           - run tests
 .PHONY: test
 test:
-	@python -m unittest discover -s tests
+	@python3 -m unittest discover -s tests
 
 
 # help: test-verbose                   - run tests [verbosely]
 .PHONY: test-verbose
 test-verbose:
-	@python -m unittest discover -s tests -v
+	@python3 -m unittest discover -s tests -v
 
 
 # help: check-coverage                 - perform test coverage checks
@@ -95,13 +95,13 @@ check-docs:
 # help: serve-docs                     - serve project html documentation
 .PHONY: serve-docs
 serve-docs:
-	@cd docs/build; python -m http.server --bind 127.0.0.1
+	@cd docs/build; python3 -m http.server --bind 127.0.0.1
 
 
 # help: dist                           - create a wheel distribution package
 .PHONY: dist
 dist:
-	@python setup.py bdist_wheel
+	@python3 setup.py bdist_wheel
 
 
 # help: dist-test                      - test a whell distribution package

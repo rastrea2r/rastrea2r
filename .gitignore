@@ -25,6 +25,7 @@ wheels/
 .installed.cfg
 *.egg
 python/*
+.venvs/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -84,8 +85,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
-.venv
-venv/
+.venv/*
 ENV/
 
 # Spyder project settings
@@ -105,3 +105,6 @@ ENV/
 docs/.DS_Store
 src/.DS_Store
 src/rastrea2r/.DS_Store
+
+# Visual Studio files
+.vscode

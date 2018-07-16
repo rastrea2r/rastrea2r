@@ -23,14 +23,14 @@ def index():
     """ Method to serve a yara rule to the REST client. Rulename (filename) must exist on the same directory """
 
     rulename = request.forms.get('rulename')
-    print "\nPulling " + rulename + "\n"
+    print ("\nPulling " + rulename + "\n")
     try:
         f = open(rulename, 'rb')
         rule = f.read()
         f.close()
         return rule
     except:
-        print "\nError: The rule requested doesn't exist\n"
+        print ("\nError: The rule requested doesn't exist\n")
 
 
 @post('/putfile')
@@ -48,7 +48,7 @@ def index():
         f.write("%s, %s, %s, %s, %s\n\n" % (recivedt, hostname, rulename, module, filename))
         f.close()
     except IOError:
-        print "\nError: The output file requested doesn't exist\n"
+        print ("\nError: The output file requested doesn't exist\n")
     return""
 
 
@@ -68,7 +68,7 @@ def index():
         f.write("%s, %s, %s, %s, %s, %s\n\n" % (recivedt, hostname, rulename, module, processpath, processpid))
         f.close()
     except IOError:
-        print "\nError: The output file requested doesn't exist\n"
+        print ("\nError: The output file requested doesn't exist\n")
     return""
 
 
