@@ -1,0 +1,62 @@
+{
+	"folders": [
+		  {
+			  "name": "Root Project",
+			  "path": "."
+		  },
+		  {
+			  "name": "Source",
+			  "path": "src/rastrea2r"
+		  },
+		  {
+			  "name": "Testing",
+			  "path": "tests"
+		  }
+	  ],
+	  "extensions": {
+	  "recommendations": [
+			"2gua.rainbow-brackets",
+			"DavidAnson.vscode-markdownlint",
+			"IBM.output-colorizer",
+			"PeterJausovec.vscode-docker",
+			"alexkrechik.cucumberautocomplete",
+			"be5invis.toml",
+			"bungcip.better-toml",
+			"donjayamanne.githistory",
+			"eamodio.gitlens",
+			"erd0s.terraform-autocomplete",
+			"linw1995.python-traceback-jumper",
+			"magicstack.MagicPython",
+			"mikestead.dotenv",
+			"ms-python.python",
+			"rafaelmaiolla.remote-vscode",
+			"redhat.vscode-yaml",
+			"silverbulleters.gherkin-autocomplete"
+        ]
+    },
+  "settings": {
+		  "editor.renderWhitespace": "boundary",
+		  "files.exclude":
+		  {
+			  "**/.git": false,
+			  "**/.venv": false,
+			  "**/.svn": true,
+			  "**/.hg": true,
+			  "**/CVS": true,
+			  "**/.DS_Store": true,
+			  "**/__pycache__": true,
+			  "**/eggs": true,
+			  "**/*.egg": true,
+			  "**/*.egg-info": true,
+			  "**/.install": true,
+			  "**/.cache": true,
+			  "**/.eggs": true,
+			  "**/*.pyc": true,
+			  "**/.ropeproject": true,
+			  "**/.composer_*": true
+			  },
+		  "files.associations": {
+				"Makefile*": "makefile"
+			  }
+  }
+}

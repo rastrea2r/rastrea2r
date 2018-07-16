@@ -70,10 +70,10 @@ def yaradisk(path, server, rule, silent):
     rule_text = fetchyararule(server, rule)
 
     if not silent:
-        print '\nPulling ' + rule + ' from ' + server + '\n'
-        print rule_text + '\n'
+        print ('\nPulling ' + rule + ' from ' + server + '\n')
+        print (rule_text + '\n')
 
-        print '\nScanning ' + path + '\n'
+        print ('\nScanning ' + path + '\n')
 
     rule_bin = yara.compile(sources={'namespace': rule_text})
 
@@ -98,7 +98,7 @@ def yaradisk(path, server, rule, silent):
                                "module": 'yaradisk',
                                "hostname": os.environ['COMPUTERNAME']}
                     if not silent:
-                        print payload
+                        print (payload)
 
                     p = post('http://'+server+':'+str(server_port)+'/putfile', data=payload)
             except:
@@ -111,10 +111,10 @@ def yaramem(server, rule, silent):
     rule_text = fetchyararule(server, rule)
 
     if not silent:
-        print '\nPulling ' + rule + ' from ' + server + '\n'
-        print rule_text + '\n'
+        print ('\nPulling ' + rule + ' from ' + server + '\n')
+        print (rule_text + '\n')
 
-        print '\nScanning running processes in memory\n'
+        print ('\nScanning running processes in memory\n')
 
     mypid = os.getpid()
 
@@ -149,7 +149,7 @@ def yaramem(server, rule, silent):
                            "module": 'yaramem',
                            "hostname": os.environ['COMPUTERNAME']}
                 if not silent:
-                    print payload
+                    print (payload)
 
                 p = post('http://'+server+':'+str(server_port)+'/putpid', data=payload)
 
@@ -164,7 +164,7 @@ def memdump(tool_server, output_server, silent):
         os.makedirs(r'\\'+smb_data)
 
     if not silent:
-        print '\nSaving output to '+r'\\'+smb_data
+        print ('\nSaving output to '+r'\\'+smb_data)
 
     tool = ('winpmem -')  # Sends output to STDOUT
 
@@ -176,8 +176,8 @@ def memdump(tool_server, output_server, silent):
     f = open(r'\\'+smb_data+r'\\'+recivedt+'-'+os.environ['COMPUTERNAME']+'-'+commandname[0]+'.img', 'w')
 
     if not silent:
-        print '\nDumping memory to ' + r'\\'+smb_data+r'\\'+recivedt+'-'+os.environ['COMPUTERNAME']+'-'\
-              + commandname[0]+'.img\n'
+        print ('\nDumping memory to ' + r'\\'+smb_data+r'\\'+recivedt+'-'+os.environ['COMPUTERNAME']+'-'\
+              + commandname[0]+'.img\n')
 
     pst = subprocess.call(r'\\'+smb_bin+r'\\'+tool, stdout=f)
 
@@ -196,7 +196,7 @@ def triage(tool_server, output_server, silent):
         os.makedirs(r'\\'+smb_data)
 
     if not silent:
-        print '\nSaving output to '+r'\\'+smb_data
+        print ('\nSaving output to '+r'\\'+smb_data)
 
     """ Add your list of Sysinternal / third-party / BATCH files here """
 
@@ -245,8 +245,8 @@ def triage(tool_server, output_server, silent):
             commandname = fullcommand[0].split('.')
 
             if not silent:
-                print '\nSaving output of ' + task + ' to '+r'\\'+smb_data+r'\\'+createt+'-'+os.environ['COMPUTERNAME']\
-                    + '-'+commandname[0]+'.log\n'
+                print ('\nSaving output of ' + task + ' to '+r'\\'+smb_data+r'\\'+createt+'-'+os.environ['COMPUTERNAME']\
+                    + '-'+commandname[0]+'.log\n')
 
             f = open(r'\\'+smb_data+r'\\'+createt+'-'+os.environ['COMPUTERNAME']+'-'+commandname[0]+'.log', 'w')
 
@@ -278,16 +278,16 @@ def triage(tool_server, output_server, silent):
             if not os.path.exists(smb_data):
                 os.makedirs(smb_data)
 
-            print '\nSaving output to '+smb_data
+            print ('\nSaving output to '+smb_data)
 
             filen = createt + "-" + os.environ['COMPUTERNAME'] + "-" + 'agentid.txt'
             f = sys.stdout
             sys.stdout = open(os.path.join(smb_data, filen), 'w')
-            print result[0]
+            print (result[0])
             sys.stdout = f
 
         except:
-            print "Agent not installed"
+            print ("Agent not installed")
             pass
 
 
@@ -307,7 +307,7 @@ def webhist(tool_server, output_server, histuser, silent):
         os.makedirs(r'\\' + smb_data)
 
     if not silent:
-        print '\nSaving output to ' + smb_data
+        print ('\nSaving output to ' + smb_data)
 
     if histuser == 'all':
         user_dirs = next(os.walk('c:\\users\\'))[1]
@@ -365,7 +365,7 @@ def webhist(tool_server, output_server, histuser, silent):
         # Parse history files
         bhv_command = bhv_command + ' /sort "Visit Time" /VisitTimeFilterType 1 /scomma "' + webhist_output + '"'
         if not silent:
-            print bhv_command
+            print (bhv_command)
         subprocess.call(bhv_command, startupinfo=si)
         # Hash output file
         g = open(r'\\'+smb_data+r'\\' + createt + '-' + os.environ['COMPUTERNAME'] + '-' + 'sha256-hashing.log', 'a')
@@ -388,7 +388,7 @@ def prefetch(tool_server, output_server, silent):
             os.makedirs(r'\\' + smb_data)
 
         if not silent:
-            print '\nSaving output to '+r'\\'+smb_data
+            print ('\nSaving output to '+r'\\'+smb_data)
 
         user_dirs = next(os.walk('c:\\windows\\prefetch\\'))[2]
         b = True
@@ -413,7 +413,7 @@ def prefetch(tool_server, output_server, silent):
                     p2.communicate()
 
     except:
-        print "Some PF files cannot be read"
+        print ("Some PF files cannot be read")
         pass
 
 

@@ -154,7 +154,7 @@ def main():
         yaramem(args.server, args.rule, args.silent)
 
     elif args.mode == 'triage':
-        print 'C'
+        print ('C')
 
 
 if __name__ == '__main__':
