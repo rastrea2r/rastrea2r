@@ -285,46 +285,7 @@ def triage(tool_server, output_server, silent):
 
             g.write("%s - %s \n\n" % (f.name, hashfile(f.name)))
 
-    """
-        guid = ""
-        resul = ""
-        try:
-            arq = platform.architecture()
-            res = arq[0]
-            if (res == "32bit"):
-                # x32
-                hKey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
-                                      r"SOFTWARE\Network Associates\ePolicy Orchestrator\Agent")
-                if (hKey != 0):
-                    result = winreg.QueryValueEx(hKey, "AgentGUID")
-                    winreg.CloseKey(hKey)
-                    guid = result[0]
-            else:
-                # x64
-                hKey2 = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
-                                       r"SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent")
-                if (hKey2 != 0):
-                    result = winreg.QueryValueEx(hKey2, "AgentGUID")
-                    winreg.CloseKey(hKey2)
-                    guid = result[0]
-
-            smb_data = r'\\' + output_server + r'\data' + r'\triage-' + os.environ['COMPUTERNAME'] + r'\\' + createt
-            if not os.path.exists(smb_data):
-                os.makedirs(smb_data)
-
-            print('\nSaving output to ' + smb_data)
-
-            filen = createt + "-" + os.environ['COMPUTERNAME'] + "-" + 'agentid.txt'
-            f = sys.stdout
-            sys.stdout = open(os.path.join(smb_data, filen), 'w')
-            print(result[0])
-            sys.stdout = f
-
-        except:
-            print("Agent not installed")
-            pass """
-
-
+ 
 def webhist(tool_server, output_server, histuser, silent):
     """ Web History collection module """
 
