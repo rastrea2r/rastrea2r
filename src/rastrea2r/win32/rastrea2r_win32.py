@@ -7,13 +7,12 @@
 
 import os
 
-import winreg
+# import winreg
 import glob
 import hashlib
 import platform
 import psutil  # New multiplatform library
 import shutil
-import subprocess
 import subprocess
 import sys
 import yara
@@ -286,6 +285,7 @@ def triage(tool_server, output_server, silent):
 
             g.write("%s - %s \n\n" % (f.name, hashfile(f.name)))
 
+    """
         guid = ""
         resul = ""
         try:
@@ -322,7 +322,7 @@ def triage(tool_server, output_server, silent):
 
         except:
             print("Agent not installed")
-            pass
+            pass """
 
 
 def webhist(tool_server, output_server, histuser, silent):
