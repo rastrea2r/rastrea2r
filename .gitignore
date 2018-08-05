@@ -108,3 +108,4 @@ src/rastrea2r/.DS_Store
 
 # Visual Studio files
 .vscode
+/src/utils/s3_utils.py

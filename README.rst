@@ -3,8 +3,8 @@
    :alt: logo
 
 .. image:: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
-   :alt: travis-ci for master branch
    :target: https://travis-ci.org/rastrea2r/rastrea2r.svg?branch=master
+   :alt: travis-ci for master branch
 
 .. image:: https://readthedocs.org/projects/rastrea2r/badge/?version=latest
    :target: http://rastrea2r.readthedocs.io/en/latest/?badge=latest
@@ -22,12 +22,11 @@ Ever wanted to turn your AV console into an Incident Response & Threat Hunting m
 
 Dependencies
 ------------
-* Python 2.7.x
-* git
-* bottle
-* requests
-* yara-python
-
+* yara-python==3.7.0
+* psutil==5.4.6
+* Requests=2.19.1
+* Pyinstaller=3.3.1
+* boto3==1.7.70
 
 Quickstart
 ----------
@@ -69,21 +68,19 @@ Quickstart
     $source /Users/ssbhat/.venvs/rastrea2r/bin/activate
 
 
-* Start the rastrea2r server by going to $PROJECT_HOME/src/rastrea2r/server folder
+* Start the rastrea2r server by referring to: https://rastrea2r-server.readthedocs.io/en/latest/?badge=latest
+
+
+* Now execute the client program, depending on which platform you are trying to scan choose the target python script appropriately. Currently Windows, Linux and Mac platforms are supported.
+
+.. note:: Following instructions explain the steps on a Mac, but on windows and linux the steps should follow the same except that you would execute the client from the specified platform folder.
+          On Windows PC's, make file system is not supported and if you need to execute rastrea2r client then you need to create the virtualenvironment manually and install the dependencies on it
+          using pip install -r requirements.txt.
 
 .. code-block:: console
 
-   $cd src/rastrea2r/server/
-   $python rastrea2r_server_v0.3.py
-   Bottle v0.12.13 server starting up (using WSGIRefServer())...
-   Listening on http://0.0.0.0:8080/
-
-* Now execute the client program, depending on which platform you are trying to scan choose the target python script appropriately. Currently Windows, Linux and Mac platforms are supported. 
-
-.. code-block:: console
-   
-   $python rastrea2r_osx_v0.3.py -h
-   usage: rastrea2r_osx_v0.3.py [-h] [-v] {yara-disk,yara-mem,triage} ...
+   $python rastrea2r_osx.py -h
+   usage: rastrea2r_osx.py [-h] [-v] {yara-disk,yara-mem,triage} ...
 
    Rastrea2r RESTful remote Yara/Triage tool for Incident Responders
 
@@ -101,8 +98,8 @@ Quickstart
 
    Further more, the available options under each command can be viewed by executing the help option. i,e
 
-   $python rastrea2r_osx_v0.3.py yara-disk -h
-   usage: rastrea2r_osx_v0.3.py yara-disk [-h] [-s] path server rule
+   $python rastrea2r_osx.py yara-disk -h
+   usage: rastrea2r_osx.py yara-disk [-h] [-s] path server rule
 
    positional arguments:
    path          File or directory path to scan
@@ -114,15 +111,15 @@ Quickstart
    -s, --silent  Suppresses standard output
 
 
-* For ex, on a Mac or Unix system you would do:
+* For ex, on a Mac system you would do:
 
 .. code-block:: console
 
    $cd src/rastrea2r/osx/
-   
-   $python rastrea2r_osx_v0.3.py yara-disk /opt http://127.0.0.1:8080/ test.yar
-   
-   
+
+   $python rastrea2r_osx.py yara-disk /opt http://localhost example.yara
+
+
 Executing rastrea2r on Windows
 ------------------------------
 
@@ -169,7 +166,19 @@ For memdump and triage modules, SMB shares must be set up in this specific way:
 
 * For yara-mem and yara-disk scans, the yara rules must be in the same directory where the server is executed from.
 
-* The RESTful API server stores data received in a file called results.txt in the same directory.
+
+
+Report Bugs
+===========
+
+Report bugs at the `issue tracker <https://github.com/ssbhat/rastrea2r/issues>`_.
+
+Please include:
+
+  - Operating system name and version.
+  - Any details about your local setup that might be helpful in troubleshooting.
+  - Detailed steps to reproduce the bug.
+
 
 
 Contributing to rastrea2r project

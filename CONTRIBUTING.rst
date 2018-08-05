@@ -33,6 +33,10 @@ is as follows.
 
   Now you can make your changes locally.
 
+.. note::  Below instructions assumes that you are developing on a Mac or Unix system. If you are on Windows machine,
+           then please note that you have to have the MakeFile support is installed. One way to install the make files is
+           by using the mingw. Please refer to: http://www.mingw.org/wiki/getting_started for more details
+
 * Familiarize yourself with the developer convenience rules in the Makefile.
 
   .. code-block:: console
