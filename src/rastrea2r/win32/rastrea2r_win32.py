@@ -2,7 +2,7 @@
 #
 # rastrea2r win32 client
 #
-# by Ismael Valenzuela @aboutsecurity / Foundstone Services (Intel Security)
+
 
 
 import os
@@ -22,11 +22,12 @@ from mimetypes import MimeTypes
 from requests import post
 from time import gmtime, strftime
 from requests.auth import HTTPBasicAuth
-from utils import http_utils
-from rastrea2r import ENABLE_TRACE, AUTH_USER, AUTH_PASSWD, SERVER_PORT, CLIENT_VERSION, API_VERSION
 import json
 import logging
 import traceback
+
+from utils.http_utils import http_get_request, http_post_request
+from rastrea2r import ENABLE_TRACE, AUTH_USER, AUTH_PASSWD, SERVER_PORT, CLIENT_VERSION, API_VERSION
 
 __version__ = CLIENT_VERSION
 
@@ -54,7 +55,7 @@ def yaradisk(path, server, rule, silent):
     results = []
     rule_url = server + ":" + SERVER_PORT + API_VERSION + "/rule?rulename=" + rule
     logger.debug("Rule_URL:"+rule_url)
-    rule_text = http_utils.http_get_request(url=rule_url, auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD))
+    rule_text = http_get_request(url=rule_url, auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD))
 
     if not silent:
         logger.debug('\nPulling ' + rule + ' from ' + server + '\n')
@@ -98,7 +99,7 @@ def yaradisk(path, server, rule, silent):
         headers = {'module': 'yara-disk-scan',
                    'Content-Type': 'application/json'}
         results_url = server + ":" + SERVER_PORT + API_VERSION + '/results'
-        response = http_utils.http_post_request(url=results_url, body=json.dumps(results),
+        response = http_post_request(url=results_url, body=json.dumps(results),
                                                 auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD),
                                                 headers=headers)
 
@@ -116,7 +117,7 @@ def yaramem(server, rule, silent):
 
     results = []
     rule_url = server + ":" + SERVER_PORT + API_VERSION + "/rule?rulename=" + rule
-    rule_text = http_utils.http_get_request(url=rule_url, auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD))
+    rule_text = http_get_request(url=rule_url, auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD))
 
     if not silent:
         logger.debug('\nPulling ' + rule + ' from ' + server + '\n')
@@ -164,7 +165,7 @@ def yaramem(server, rule, silent):
         headers = {'module': 'yara-mem-scan',
                    'Content-Type': 'application/json'}
         results_url = server + ":" + SERVER_PORT + API_VERSION + '/results'
-        response = http_utils.http_post_request(url=results_url, body=json.dumps(results),
+        response = http_post_request(url=results_url, body=json.dumps(results),
                                                 auth=HTTPBasicAuth(AUTH_USER, AUTH_PASSWD),
                                                 headers=headers)
 
@@ -420,8 +421,7 @@ def prefetch(tool_server, output_server, silent):
 
 
 def main():
-    parser = ArgumentParser(description='::Rastrea2r RESTful remote Yara/Triage tool for Incident Responders '
-                                        'by Ismael Valenzuela @aboutsecurity / Foundstone (Intel Security)::')
+    parser = ArgumentParser(description='::Rastrea2r RESTful remote Yara/Triage tool for Incident Responders ::')
 
     subparsers = parser.add_subparsers(dest="mode", help='modes of operation')
 

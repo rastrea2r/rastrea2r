@@ -7,12 +7,10 @@ import logging
 from logging.handlers import RotatingFileHandler
 import configparser
 
-__version__ = '0.1.0'
 
 # Initialize Configuration
 config = configparser.ConfigParser()
 config.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), '../rastrea2r', 'rastrea2r.ini'))
-
 
 ENABLE_TRACE = config["rastrea2r"]["enable_trace"]
 AUTH_USER = config["rastrea2r"]["username"]
@@ -20,6 +18,8 @@ AUTH_PASSWD = config["rastrea2r"]["password"]
 SERVER_PORT = config["rastrea2r"]["server_port"]
 CLIENT_VERSION = config["rastrea2r"]["version"]
 API_VERSION = config["rastrea2r"]["api_version"]
+
+__version__ = CLIENT_VERSION
 
 # Check for sane config file
 if "rastrea2r" not in config:
