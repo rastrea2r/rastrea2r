@@ -7,6 +7,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import configparser
 
+__version__ = '0.1.0'
 
 # Initialize Configuration
 config = configparser.ConfigParser()
@@ -18,8 +19,8 @@ AUTH_PASSWD = config["rastrea2r"]["password"]
 SERVER_PORT = config["rastrea2r"]["server_port"]
 CLIENT_VERSION = config["rastrea2r"]["version"]
 API_VERSION = config["rastrea2r"]["api_version"]
+WINDOWS_COMMANDS = config["rastrea2r"]["windows_commands"].split(',')
 
-__version__ = CLIENT_VERSION
 
 # Check for sane config file
 if "rastrea2r" not in config:
