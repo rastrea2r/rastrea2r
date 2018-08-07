@@ -9,6 +9,5 @@ before_install:
   - pip install pip --upgrade
 install:
   - make dist
-  - pip install dist/rastrea2r-*.whl
 script:
-  - make test
+

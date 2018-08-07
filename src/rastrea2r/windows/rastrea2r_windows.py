@@ -81,7 +81,7 @@ def yaradisk(path, server, rule, silent):
                     matches = rule_bin.match(filepath=file_path)
 
                 if matches:
-                    result = {"rulename": matches[0],
+                    result = {"rulename": str(matches[0]),
                               "filename": file_path,
                               "module": 'yaradisk',
                               "hostname": os.environ['COMPUTERNAME']}
@@ -96,6 +96,7 @@ def yaradisk(path, server, rule, silent):
                         error=str(e), stack_trace=traceback.format_exc() if ENABLE_TRACE else ""))
 
     if len(results) > 0:
+        logger.debug("Results is: " + str(results))
         headers = {'module': 'yara-disk-scan',
                    'Content-Type': 'application/json'}
         results_url = server + ":" + SERVER_PORT + API_VERSION + '/results'
@@ -147,11 +148,11 @@ def yaramem(server, rule, silent):
                 matches = rule_bin.match(pid=client_pid)
             except:
                 if not silent:
-                    logger.error('Failed scanning process ID: %d' % client_pid)
+                    logger.debug('Failed scanning process ID: %d' % client_pid)
                 continue
 
             if matches:
-                result = {"rulename": matches,
+                result = {"rulename": str(matches),
                           "processpath": client_ppath,
                           "processpid": client_pid,
                           "module": 'yaramem',

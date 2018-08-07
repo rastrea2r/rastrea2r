@@ -38,10 +38,10 @@ if "debug" in config["rastrea2r"] and int(config["rastrea2r"]["debug"]) != 0:
     logger.setLevel(logging.DEBUG)
     logging.debug("Enabled Debug mode")
 else:
-    # STDOUT Logging defaults to Warning
+    # STDOUT Logging defaults to INFO
     lsh = logging.StreamHandler(sys.stdout)
     lsh.setFormatter(lformat)
-    lsh.setLevel(logging.WARNING)
+    lsh.setLevel(logging.INFO)
     logger.addHandler(lsh)
 
 # Enable logging to file if configured
