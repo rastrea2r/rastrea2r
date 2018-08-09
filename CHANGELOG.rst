@@ -47,3 +47,29 @@ Version History
 
 - Various code optimizations.
 
+
+1.0 -   08-10-2018
+==================
+
+**Blackhat Arsanal Release**
+
+- Moved the rastrea2r server to a new github project here_:
+.. _here: https://github.com/rastrea2r/rastrea2r-server
+
+- Modular implementation with python 3.4 and above supported now
+
+- Introduced a new config (rastrea2r.ini) for rastrea2r client
+
+- Support for the execution of Commands by specifying them using config files for triage module
+
+- Support for executing the custom commands/batch scripts using the triage module
+
+- Support for collecting the baseline information from the target devices
+
+- Continuous integration support using travis.ci
+
+- Automated documentation support using readthedocs.org
+
+BUILD AUTOMATION SCRIPTS TO HELP EASIER DEPLOYMENT
+ENHACED LOGGING & DEBUGGING CAPABILITIES
+Travis and ReadTheDoc.org Integration

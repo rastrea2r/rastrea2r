@@ -7,7 +7,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 import configparser
 
-__version__ = '0.1.0'
+__version__ = '1.0.0'
 
 # Initialize Configuration
 config = configparser.ConfigParser()
