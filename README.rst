@@ -14,7 +14,7 @@
    :alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed.
    :target: http://www.repostatus.org/#active
 
-.. image::  https://raw.githubusercontent.com/toolswatch/badges/master/arsenal/usa/2018.svg
+.. image:: https://raw.githubusercontent.com/toolswatch/badges/master/arsenal/usa/2018.svg
    :alt: Black Hat Arsenal 2018
    :target: https://www.toolswatch.org/2018/05/black-hat-arsenal-usa-2018-the-w0w-lineup/
 
