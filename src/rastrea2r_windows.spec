@@ -13,7 +13,7 @@ datas = [
 
 
 a = Analysis(['rastrea2r\\windows\\rastrea2r_windows.py'],
-             pathex=['C:\\Users\\ivalenzu\\Code\rastrea2r\\src\\rastrea2r\\windows',
+             pathex=['C:\\Code\rastrea2r\\src\\rastrea2r\\windows',
              'C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\ucrt\\DLLs\\x86',
              'C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\ucrt\\DLLs\\x64'],
              binaries=[],

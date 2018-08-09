@@ -396,19 +396,19 @@ def collect(tool_server, output_server, silent):
 
     recivedt=strftime('%Y%m%d%H%M%S', gmtime()) # Timestamp in GMT
     
-    tool=('\\CyLR\CyLR.exe -od \\\\' + smb_data + ' -of ' + recivedt + '.zip') # Send output to output server
+    tool=('\\CyLR\CyLR.exe -o \\\\' + smb_data + ' -of ' + os.environ['COMPUTERNAME'] + '.zip') # Send output to output server
     print (tool)
         
     fullcommand=tool.split()
     commandname=fullcommand[0].split('.')
 
     if not silent:
-        print ('\nDumping artifacts to ' +r'\\'+smb_data+r'\\'+recivedt+'.zip\n')
+        print ('\nDumping artifacts to ' +r'\\'+smb_data+r'\\'+ os.environ['COMPUTERNAME'] +'.zip\n')
 
     subprocess.call(r'\\'+smb_bin+r'\\'+tool)
 
     with open(r'\\' + smb_data + r'\\' + recivedt + '-sha256-hashing.log', 'a') as g:
-        g.write("%s - %s \n\n" % (r'\\'+smb_data+r'\\'+recivedt+'.zip', hashfile(r'\\'+smb_data+r'\\'+recivedt+'.zip')))
+        g.write("%s - %s \n\n" % (r'\\'+smb_data+r'\\'+ os.environ['COMPUTERNAME'] +'.zip', hashfile(r'\\'+smb_data+r'\\'+os.environ['COMPUTERNAME']+'.zip')))
 
 
 def main():
