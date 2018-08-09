@@ -10,4 +10,4 @@ before_install:
 install:
   - make dist
 script:
-
+  - make test
