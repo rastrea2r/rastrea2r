@@ -69,7 +69,3 @@ Version History
 - Continuous integration support using travis.ci
 
 - Automated documentation support using readthedocs.org
-
-BUILD AUTOMATION SCRIPTS TO HELP EASIER DEPLOYMENT
-ENHACED LOGGING & DEBUGGING CAPABILITIES
-Travis and ReadTheDoc.org Integration
