@@ -23,27 +23,29 @@ Description
 
 Ever wanted to turn your AV console into an Incident Response & Threat Hunting machine? Rastrea2r (pronounced "rastreador" - hunter- in Spanish) is a multi-platform open source tool that allows incident responders and SOC analysts to triage suspect systems and hunt for Indicators of Compromise (IOCs) across thousands of endpoints in minutes. To parse and collect artifacts of interest from remote systems (including memory dumps), rastrea2r can execute sysinternal, system commands and other 3rd party tools (including the custom scripts) across multiples endpoints, saving the output to a centralized share for automated or manual analysis. By using a client/server RESTful API, rastrea2r can also hunt for IOCs on disk and memory across multiple systems using YARA rules. As a command line tool, rastrea2r can be easily integrated within McAfee ePO, as well as other AV consoles and orchestration tools, allowing incident responders and SOC analysts to collect forensic evidence and hunt for IOCs without the need for an additional agent, with 'gusto' and style!
 
-Current functionality Supported:
-* Fast Triaging: Execute Sysinternals tools, or any other 3rd party batch scripts (including custom scripts) to perform basic triaging ** Windows Only
-* Forensic Artifact Collection: Capabilities to Create snapshots quickly (Implements a wrapper for CyLR tool, which collects forensic artifacts from hosts with NTFS file systems quickly, securely and minimizes impact to the host.) **Windows Only
-* Web History: Collect the Browser History (Currently supports IE, Chrome, Firefox only)
-* Prefetch Tool: Collect the prefetch data in Windows as they are great artifacts for forensic investigations to analyze applications that have been run on a system. ** Windows only
-* Memory Dump: Acquires a memory dump from the endpoint ** Windows only
-* Yara Disk: Yara scan for file/directory objects on disk
-* Yara Mem: Yara scan for running processes in memory
+
+Currently Supported functionalities
+-----------------------------------
+
+- Fast Triaging: Execute Sysinternals tools, or any other 3rd party batch scripts (including custom scripts) to perform basic triaging ** Windows Only
+- Forensic Artifact Collection: Capabilities to Create snapshots quickly (Implements a wrapper for CyLR tool, which collects forensic artifacts from hosts with NTFS file systems quickly, securely and minimizes impact to the host.) **Windows Only
+- Web History: Collect the Browser History (Currently supports IE, Chrome, Firefox only)
+- Prefetch Tool: Collect the prefetch data in Windows as they are great artifacts for forensic investigations to analyze applications that have been run on a system. ** Windows only
+- Memory Dump: Acquires a memory dump from the endpoint ** Windows only
+- Yara Disk: Yara scan for file/directory objects on disk
+- Yara Mem: Yara scan for running processes in memory
 
 Rastrea2r now also supports pushing the Scan Results to a Restful Server using HTTP. This functionality allows the users to deploy rastrea2r on their enterprises so that they can execute different rastrea2r commands to collect and triage the data and later store the Yara disk or Yara Mem results onto the Server for further analysis.
 
 A high level design of the rastrea2r deployment on end points can be seen as below:
 
-.. image:: docs/Images/Deploy_Rastrea2r.jpg
+.. image:: https://github.com/rastrea2r/rastrea2r/blob/master/docs/images/Deploy_Rastrea2r.png
     :width: 200px
     :align: center
     :height: 100px
     :alt: Rastrea2r end point deployment
 
-Rastrea2r allows users to specify the list of commands or batch scripts to be executed during "triage" via a configuration file, which is located here_.
-.._here: src/rastrea2r/rastrea2r.ini
+Rastrea2r allows users to specify the list of commands or batch scripts to be executed during "triage" via a configuration file, which is located `here_<https://github.com/rastrea2r/rastrea2r/blob/master/src/rastrea2r/rastrea2r.ini>`_.
 
 Notes
 -----
@@ -58,7 +60,7 @@ For memdump and triage modules, SMB shares must be set up in this specific way:
 
      \\path-to-share-folderdata
 
-* For yara-mem and yara-disk scans, the yara rules must be in the same directory where the server is executed from.
+* For yara-mem and yara-disk scans, the yara rules must be present in the rastrea2r server before using the commands
 
 
 Dependencies
