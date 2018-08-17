@@ -29,7 +29,7 @@ Currently Supported functionalities
 
 - Fast Triaging: Execute Sysinternals tools, or any other 3rd party batch scripts (including custom scripts) to perform basic triaging ** Windows Only
 - Forensic Artifact Collection: Capabilities to Create snapshots quickly (Implements a wrapper for CyLR tool, which collects forensic artifacts from hosts with NTFS file systems quickly, securely and minimizes impact to the host.) **Windows Only
-- Web History: Collect the Browser History (Currently supports IE, Chrome, Firefox only)
+- Web History: Collect the Browser History (Currently supports IE, Chrome, Firefox only) ** 
 - Prefetch Tool: Collect the prefetch data in Windows as they are great artifacts for forensic investigations to analyze applications that have been run on a system. ** Windows only
 - Memory Dump: Acquires a memory dump from the endpoint ** Windows only
 - Yara Disk: Yara scan for file/directory objects on disk
@@ -45,10 +45,11 @@ A high level design of the rastrea2r deployment on end points can be seen as bel
     :height: 100px
     :alt: Rastrea2r end point deployment
 
-Rastrea2r allows users to specify the list of commands or batch scripts to be executed during "triage" via a configuration file, which is located `here_<https://github.com/rastrea2r/rastrea2r/blob/master/src/rastrea2r/rastrea2r.ini>`_.
+Rastrea2r allows users to specify the list of commands or batch scripts to be executed during "triage" via a configuration file, which is located `here
+<https://github.com/rastrea2r/rastrea2r/blob/master/src/rastrea2r/rastrea2r.ini>`_.
 
-Notes
------
+
+*Notes*
 
 For memdump and triage modules, SMB shares must be set up in this specific way:
 
