@@ -1,6 +1,4 @@
 yara-python==3.7.0
-bottle
 psutil==5.4.6
 Requests==2.19.1
 Pyinstaller==3.3.1
-boto3==1.7.70

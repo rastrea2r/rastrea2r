@@ -14,14 +14,51 @@
    :alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed.
    :target: http://www.repostatus.org/#active
 
-.. image:: https://raw.githubusercontent.com/toolswatch/badges/master/arsenal/usa/2018.svg
+.. image:: https://github.com/toolswatch/badges/blob/master/arsenal/usa/2018.svg
    :alt: Black Hat Arsenal 2018
-   :target: https://www.toolswatch.org/2018/05/black-hat-arsenal-usa-2018-the-w0w-lineup/
+   :target: https://www.blackhat.com/us-18/arsenal/schedule/index.html#rastrea2r-reloaded-collecting-38-hunting-for-iocs-with-gusto-and-style-12103
 
 Description
 -----------
 
-Ever wanted to turn your AV console into an Incident Response & Threat Hunting machine? Rastrea2r (pronounced "rastreador" - hunter- in Spanish) is a multi-platform open source tool that allows incident responders and SOC analysts to triage suspect systems and hunt for Indicators of Compromise (IOCs) across thousands of endpoints in minutes. To parse and collect artifacts of interest from remote systems (including memory dumps), rastrea2r can execute sysinternal, system commands and other 3rd party tools across multiples endpoints, saving the output to a centralized share for automated or manual analysis. By using a client/server RESTful API, rastrea2r can also hunt for IOCs on disk and memory across multiple systems using YARA rules. As a command line tool, rastrea2r can be easily integrated within McAfee ePO, as well as other AV consoles and orchestration tools, allowing incident responders and SOC analysts to collect forensic evidence and hunt for IOCs without the need for an additional agent, with 'gusto' and style!
+Ever wanted to turn your AV console into an Incident Response & Threat Hunting machine? Rastrea2r (pronounced "rastreador" - hunter- in Spanish) is a multi-platform open source tool that allows incident responders and SOC analysts to triage suspect systems and hunt for Indicators of Compromise (IOCs) across thousands of endpoints in minutes. To parse and collect artifacts of interest from remote systems (including memory dumps), rastrea2r can execute sysinternal, system commands and other 3rd party tools (including the custom scripts) across multiples endpoints, saving the output to a centralized share for automated or manual analysis. By using a client/server RESTful API, rastrea2r can also hunt for IOCs on disk and memory across multiple systems using YARA rules. As a command line tool, rastrea2r can be easily integrated within McAfee ePO, as well as other AV consoles and orchestration tools, allowing incident responders and SOC analysts to collect forensic evidence and hunt for IOCs without the need for an additional agent, with 'gusto' and style!
+
+Current functionality Supported:
+* Fast Triaging: Execute Sysinternals tools, or any other 3rd party batch scripts (including custom scripts) to perform basic triaging ** Windows Only
+* Forensic Artifact Collection: Capabilities to Create snapshots quickly (Implements a wrapper for CyLR tool, which collects forensic artifacts from hosts with NTFS file systems quickly, securely and minimizes impact to the host.) **Windows Only
+* Web History: Collect the Browser History (Currently supports IE, Chrome, Firefox only)
+* Prefetch Tool: Collect the prefetch data in Windows as they are great artifacts for forensic investigations to analyze applications that have been run on a system. ** Windows only
+* Memory Dump: Acquires a memory dump from the endpoint ** Windows only
+* Yara Disk: Yara scan for file/directory objects on disk
+* Yara Mem: Yara scan for running processes in memory
+
+Rastrea2r now also supports pushing the Scan Results to a Restful Server using HTTP. This functionality allows the users to deploy rastrea2r on their enterprises so that they can execute different rastrea2r commands to collect and triage the data and later store the Yara disk or Yara Mem results onto the Server for further analysis.
+
+A high level design of the rastrea2r deployment on end points can be seen as below:
+
+.. image:: docs/Images/Deploy_Rastrea2r.jpg
+    :width: 200px
+    :align: center
+    :height: 100px
+    :alt: Rastrea2r end point deployment
+
+Rastrea2r allows users to specify the list of commands or batch scripts to be executed during "triage" via a configuration file, which is located here_.
+.._here: src/rastrea2r/rastrea2r.ini
+
+Notes
+-----
+
+For memdump and triage modules, SMB shares must be set up in this specific way:
+
+* Binaries (sysinternals, batch files and others) must be located in a shared folder called TOOLS (read only)
+
+      \\path-to-share-foldertools
+
+* Output is sent to a shared folder called DATA (write only)
+
+     \\path-to-share-folderdata
+
+* For yara-mem and yara-disk scans, the yara rules must be in the same directory where the server is executed from.
 
 
 Dependencies
@@ -30,7 +67,6 @@ Dependencies
 * psutil==5.4.6
 * Requests=2.19.1
 * Pyinstaller=3.3.1
-* boto3==1.7.70
 
 Quickstart
 ----------
@@ -77,23 +113,31 @@ Quickstart
 
 * Now execute the client program, depending on which platform you are trying to scan choose the target python script appropriately. Currently Windows, Linux and Mac platforms are supported.
 
-.. note:: Following instructions explain the steps on a Mac, but on windows and linux the steps should follow the same except that you would execute the client from the specified platform folder.
+
+
+
+.. note:: Following instructions explain the steps on a Windows, but on Mac and linux the steps should follow the same except that you would execute the client from the specified platform folder.
           On Windows PC's, make file system is not supported and if you need to execute rastrea2r client then you need to create the virtualenvironment manually and install the dependencies on it
           using pip install -r requirements.txt.
 
 .. code-block:: console
 
-   $python rastrea2r_osx.py -h
-   usage: rastrea2r_osx.py [-h] [-v] {yara-disk,yara-mem,triage} ...
+   $python rastrea2r_windows.py -h
+   usage: rastrea2r_windows.py [-h] [-v] {yara-disk,yara-mem,triage,memdump,triage,web-hist,prefetch} ...
 
    Rastrea2r RESTful remote Yara/Triage tool for Incident Responders
 
-   positional arguments:  {yara-disk,yara-mem,triage}
+   positional arguments:  {yara-disk,yara-mem,triage,memdump,triage,web-hist,prefetch}
 
    modes of operation
     yara-disk           Yara scan for file/directory objects on disk
     yara-mem            Yara scan for running processes in memory
+    memdump             Acquires a memory dump from the endpoint
     triage              Collect triage information from endpoint
+    web-hist            Generates web history for specified user account
+    prefetch            Generates prefetch view
+    collect             Acquires artifacts from the endpoint
+
 
    optional arguments:
     -h, --help            show this help message and exit
@@ -102,7 +146,7 @@ Quickstart
 
    Further more, the available options under each command can be viewed by executing the help option. i,e
 
-   $python rastrea2r_osx.py yara-disk -h
+   $python rastrea2r_windows.py yara-disk -h
    usage: rastrea2r_osx.py yara-disk [-h] [-s] path server rule
 
    positional arguments:
@@ -119,56 +163,37 @@ Quickstart
 
 .. code-block:: console
 
-   $cd src/rastrea2r/osx/
+   $cd src/rastrea2r/windows/
 
-   $python rastrea2r_osx.py yara-disk /opt http://localhost example.yara
-
-
-Executing rastrea2r on Windows
-------------------------------
-
-* Apart from the libraries specified in requirements.txt, we need to install the following libraries
-
-      * PSutil for win64: https://github.com/giampaolo/psutil
-
-      * WMI for win32: https://pypi.python.org/pypi/WMI/
-
-      * Requests: pip install requests
-
-* Compiling rastrea2r
-       Make sure you have all the dependencies installed for the binary you are going to build on your Windows box. Then install:
-
-       * Pywin32: http://sourceforge.net/projects/pywin32/files/ ** Windows only
-
-       * Pyinstaller: https://github.com/pyinstaller/pyinstaller/wiki
+   $python rastrea2r_windows.py yara-disk /opt http://localhost example.yara
 
 
-Currently Supported functionality
----------------------------------
+Executing rastrea2r.exe on Windows
+----------------------------------
 
-* yara-disk: Yara scan for file/directory objects on disk
+* On windows platform rastrea2r can be compiled into a single exe file so that it can later be executed on the endpoints. To do so, execute the build_exe.bat file located under "src" folder so that it can generate the exe from the latest codebase. Upon successful execution it will generate the exe under dist folder. And all the functionalities of rastrea2r described above can be executed with exe as well. for ex:
 
-* yara-mem: Yara scan for running processes in memory
+.. code-block:: console
 
-* memdump: Acquires a memory dump from the endpoint ** Windows only
+    $rastrea2r.exe collect tools.myserver.com data.myserver.com   
 
-* triage: Collects triage information from the endpoint ** Windows only
+    //where tools.myserver.com has a shared smb folder called "tools" with readonly access as all the tools specified in the rastrea2r.ini must be present in this tools folder prior to executing the commands 
+    //      data.myserver.com is server which has shared folder called "data" with write access so that all the results from the rastrea2r command can be placed here.
 
 
-Notes
------
+.. note:: 
+    In order to generate the rastrea2r.exe the build_exe.bat internally uses pyinstaller spec file. Which would have a dependency on the Windows C++ binaries which must be installed on the machine prior to calling the build_exe.bat. Follow these instructions to update the spec file.
 
-For memdump and triage modules, SMB shares must be set up in this specific way:
+.. code-block:: console
 
-* Binaries (sysinternals, batch files and others) must be located in a shared folder called TOOLS (read only)
-
-      \\path-to-share-foldertools
-
-* Output is sent to a shared folder called DATA (write only)
-
-     \\path-to-share-folderdata
-
-* For yara-mem and yara-disk scans, the yara rules must be in the same directory where the server is executed from.
+    1. Download and install this Windows SDK: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk
+    2. These dlls can then be found here (or Program Files x86):
+        C:\Program Files\Windows Kits\10\Redist\ucrt\DLLs
+    3. Update your pathex variable in your spec file to tell pyinstaller to look there:
+        
+        pathex=['C:\\Users\\grey_hat\\Desktop\\csm\\test', 
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\ucrt\\DLLs\\x86',
+            'C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\ucrt\\DLLs\\x64']
 
 
 
