@@ -230,15 +230,15 @@ Demo videos on Youtube
 
 Presentations
 -------------
-* `rastrea2r at BlackHat Arsenal 2018 <https://www.blackhat.com/us-18/arsenal/schedule/#rastrea2r-reloaded-collecting-38-hunting-for-iocs-with-gusto-and-style-12103>`_.
-* `rastrea2r at BlackHat Arsenal 2016 <https://www.blackhat.com/us-16/arsenal.html#rastrea2r`_.
-* `Recording of talk on rastrea2r at the SANS Threat Hunting Summit 2016 <https://www.youtube.com/watch?v=0PvBsL6KKfA&feature=youtu.be&a`_.
-* `SANS SOC Summit 2017<https://www.sans.org/summit-archives/file/summit-archive-1496771906.pdf>`_.
-* `SANS SIEM Summit 2017<https://www.sans.org/summit-archives/file/summit-archive-1511996504.pdf>`_.
+* ` rastrea2r at BlackHat Arsenal 2018 <https://www.blackhat.com/us-18/arsenal/schedule/#rastrea2r-reloaded-collecting-38-hunting-for-iocs-with-gusto-and-style-12103>`_.
+* ` rastrea2r at BlackHat Arsenal 2016 <https://www.blackhat.com/us-16/arsenal.html#rastrea2r`_.
+* ` Recording of talk on rastrea2r at the SANS Threat Hunting Summit 2016 <https://www.youtube.com/watch?v=0PvBsL6KKfA&feature=youtu.be&a`_.
+* ` SANS SOC Summit 2017<https://www.sans.org/summit-archives/file/summit-archive-1496771906.pdf>`_.
+* ` SANS SIEM Summit 2017<https://www.sans.org/summit-archives/file/summit-archive-1511996504.pdf>`_.
 
 Publications and Articles
 -------------------------
-* `Helping Overburdened SOC Analysts Become More Effective Threat Hunters<https://securingtomorrow.mcafee.com/technical-how-to/helping-overburdened-soc-analysts-become-effective-threat-hunters>`_.
+* ` Helping Overburdened SOC Analysts Become More Effective Threat Hunters<https://securingtomorrow.mcafee.com/technical-how-to/helping-overburdened-soc-analysts-become-effective-threat-hunters>`_.
 
 Credits & References
 --------------------
