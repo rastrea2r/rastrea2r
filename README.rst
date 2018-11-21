@@ -23,6 +23,10 @@ Description
 
 Ever wanted to turn your AV console into an Incident Response & Threat Hunting machine? Rastrea2r (pronounced "rastreador" - hunter- in Spanish) is a multi-platform open source tool that allows incident responders and SOC analysts to triage suspect systems and hunt for Indicators of Compromise (IOCs) across thousands of endpoints in minutes. To parse and collect artifacts of interest from remote systems (including memory dumps), rastrea2r can execute sysinternal, system commands and other 3rd party tools (including the custom scripts) across multiples endpoints, saving the output to a centralized share for automated or manual analysis. By using a client/server RESTful API, rastrea2r can also hunt for IOCs on disk and memory across multiple systems using YARA rules. As a command line tool, rastrea2r can be easily integrated within McAfee ePO, as well as other AV consoles and orchestration tools, allowing incident responders and SOC analysts to collect forensic evidence and hunt for IOCs without the need for an additional agent, with 'gusto' and style!
 
+*Presented at BlackHat Arsenal 2016 and 2018!*
+
+* `rastrea2r at BlackHat Arsenal 2018 <https://www.blackhat.com/us-18/arsenal/schedule/#rastrea2r-reloaded-collecting-38-hunting-for-iocs-with-gusto-and-style-12103>`_.
+* `rastrea2r at BlackHat Arsenal 2016 <https://www.blackhat.com/us-16/arsenal.html#rastrea2r>`_.
 
 Currently Supported functionalities
 -----------------------------------
