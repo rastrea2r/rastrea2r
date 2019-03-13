@@ -23,6 +23,7 @@ help:
 venv:
 	@test -d "$(VENVS_DIR)" || mkdir -p "$(VENVS_DIR)"
 	@rm -Rf "$(VENV_DIR)"
+	@/bin/bash -c "if uname -a | grep -i 'debian\|ubuntu' -c >>/dev/null; then if ! dpkg -l | grep libpython3-dev -c >>/dev/null; then sudo apt-get install libpython3-dev; fi; fi"
 	@python3 -m virtualenv "$(VENV_DIR)"
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && pip install pip --upgrade && pip install -r requirements.dev.txt && pip install -e ."
 	@echo "Enter virtual environment using:\n\n\t$ source $(VENV_DIR)/bin/activate\n"
