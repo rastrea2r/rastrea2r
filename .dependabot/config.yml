@@ -4,6 +4,6 @@ update_configs:
     directory: "/"
     update_schedule: "live"
     target_branch: "master"
-    default_assignees: "ssbhat"
-    default_reviewers: "ssbhat"
+    default_assignees: ["ssbhat"]
+    default_reviewers: ["ssbhat"]
 
