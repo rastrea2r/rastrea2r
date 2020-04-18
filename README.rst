@@ -247,6 +247,6 @@ Publications and Articles
 Credits & References
 --------------------
 
-* To Robert Gresham Jr. (@rwgresham) and Ryan O'Connor (@_remixed) for their contributions to the Triage module. Thanks folks!
+* To Robert Gresham Jr. (@socologize) and Ryan O'Connor (@_remixed) for their contributions to the Triage module. Thanks folks!
 
 * To Ricardo Dias for the idea of using a REST server and his great paper on how to use Python and Yara with McAfee ePO: http://www.sans.org/reading-room/whitepapers/forensics/intelligence-driven-incident-response-yara-35542
