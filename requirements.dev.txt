@@ -2,6 +2,6 @@
 autopep8
 coverage
 pycodestyle
-sphinx==1.6.1
+sphinx==3.2.0
 twine
 wheel
